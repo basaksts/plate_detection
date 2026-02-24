@@ -17,6 +17,7 @@ DB_NAME = "otopark.db"
 CONF_THRES = 0.25
 IOU_THRES = 0.45
 
+
 # Tesseract Yolu
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 TR_REGEX = re.compile(r'(0[1-9]|[1-7][0-9]|8[0-1])\s*[A-Z]{1,4}\s*[0-9]{2,4}')
