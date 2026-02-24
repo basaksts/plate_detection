@@ -1,2 +1,2 @@
-# otopark-plaka-tanima
-YOLOv8 ve Flask tabanlı Raspberry Pi otopark geçiş sistemi
+# plate-detection-project
+YOLOv8 and Flask based Raspberry Pi car park transition system
