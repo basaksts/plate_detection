@@ -7,6 +7,8 @@ import re
 import time
 import sqlite3
 import datetime
+import os 
+app = Flask(__name__, template_folder="templates", static_folder="static")
 from flask import Flask, Response, render_template, jsonify, request
 
 

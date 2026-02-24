@@ -2,6 +2,7 @@ import sqlite3
 
 DB_NAME = "otopark.db"
 
+
 def tablo_olustur():
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
@@ -28,3 +29,4 @@ def tablo_olustur():
 
 if __name__ == "__main__":
     tablo_olustur()
+
