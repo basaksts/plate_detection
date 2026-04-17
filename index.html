@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otopark Paneli</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="menu-icon"><i class="fas fa-bars"></i></div>
+        <h1>HOMEPAGE</h1>
+        <div class="exit-icon"><i class="fas fa-sign-out-alt"></i></div>
+    </header>
+
+    <div class="container">
+        
+        <div style="text-align: center; margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <strong style="font-size: 18px; margin-right: 15px; color: #2c3e50;">Çalışma Modu:</strong>
+            <button id="modButonu" onclick="moduDegistir()" style="background-color: #2ecc71; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s;">
+                Yükleniyor...
+            </button>
+        </div>
+
+        <div class="menu-grid">
+            <button class="app-btn" onclick="showSection('camera')">plate detection</button>
+            <button class="app-btn" onclick="showSection('logs')">past entrances</button>
+            <button class="app-btn" onclick="showSection('araclar')">authorized vehicles</button>
+        </div>
+
+<div id="araclar-section" class="content-card" style="display:none;">
+    <h2 class="section-title">authorized vehicles</h2>
+    
+    <div style="background:#eee; padding:10px; border-radius:10px; margin-bottom:15px;">
+        <h3 style="margin-top:0; color:#C05826;">+ Add New Vehicle</h3>
+        <input type="text" id="yeni_plaka" placeholder="Plaka (Örn: 34AB1234)" 
+               style="width:90%; padding:8px; margin-bottom:5px; border-radius:5px; border:1px solid #ccc;">
+        <input type="text" id="yeni_sahip" placeholder="Araç Sahibi (Örn: Samet)" 
+               style="width:90%; padding:8px; margin-bottom:5px; border-radius:5px; border:1px solid #ccc;">
+        <button class="app-btn" onclick="aracEkle()" style="background-color:#28a745; margin-top:5px;">SAVE</button>
+    </div>
+
+    <div style="margin-top: 20px; border-top: 2px dashed #bdc3c7; padding-top: 15px;">
+        <h4 style="color: #d35400; margin-bottom: 10px;">📁 Toplu Liste Yükle (CSV)</h4>
+        <input type="file" id="csvDosyasi" accept=".csv" style="margin-bottom: 10px; width: 100%;">
+        <button onclick="topluEkle()" style="background-color: #2980b9; color: white; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer;">LİSTEYİ İÇERİ AKTAR</button>
+    </div>
+
+    <table class="log-table" id="arac_tablosu">
+        <thead>
+            <tr>
+                <th>Plaka</th>
+                <th>Sahip</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+</div>
+
+        <div id="camera-section" class="content-card">
+            <h2 class="section-title">plate detection</h2>
+            
+            <div class="input-group">
+                <label>SON OKUNAN PLAKA</label>
+                <div class="display-box" id="son_plaka">---</div>
+            </div>
+
+            <div class="camera-frame">
+                <img src="{{ url_for('video_feed') }}" class="live-feed">
+            </div>
+
+            <div class="status-box">
+                Durum: <span id="son_durum">Bekleniyor...</span>
+            </div>
+        </div>
+
+        <div id="logs-section" class="content-card" style="display:none;">
+            <h2 class="section-title">past entrances</h2>
+            <div class="log-list-container">
+            <div style="background:#f8f9fa; padding:15px; border-radius:5px; margin-bottom:15px; border-left: 4px solid #3498db; text-align: center;">
+                <h4 style="margin-top: 0; margin-bottom: 15px; color: #2c3e50;">⏱️ Saat Aralığındaki Araçları Toplu Onayla</h4>
+    
+                <label style="font-weight: bold;">Başlangıç:</label>
+                <input type="datetime-local" id="baslangicTarihi" style="margin-right: 15px; padding: 5px;">
+
+                <label style="font-weight: bold;">Bitiş:</label>
+                <input type="datetime-local" id="bitisTarihi" style="margin-right: 15px; padding: 5px;">
+
+                <button onclick="saatleYetkilendir()" style="background:#3498db; color:white; border:none; padding:8px 15px; border-radius:4px; font-weight: bold; cursor:pointer;">Seçili Aralığı Onayla</button>
+        </div>
+                <table class="log-table" id="log_table">
+                    <thead>
+                        <tr>
+                            <th>Saat</th>
+                            <th>Plaka</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Sayfa Geçiş Fonksiyonu
+        function showSection(sectionId) {
+            $('.content-card').hide(); // Hepsini gizle
+            $('#' + sectionId + '-section').fadeIn(); // İsteneni aç
+        }
+
+        // Verileri Güncelleme (Her 1 saniyede bir)
+        setInterval(function() {
+            $.getJSON('/api/veriler', function(data) {
+                // Plaka Kutusu
+                $('#son_plaka').text(data.son_plaka || "---");
+                $('#son_durum').text(data.durum);
+
+                // Duruma göre renk (Yeşil/Kırmızı)
+                if(data.durum && data.durum.includes("İZİN")) {
+                    $('#son_plaka').css('border-color', 'green').css('color', 'green');
+                } else {
+                    $('#son_plaka').css('border-color', '#D2691E').css('color', '#333');
+                }
+                
+                // Tabloyu Doldur
+                var rows = '';
+                $.each(data.loglar, function(index, log) {
+                    // log: [id, plaka, sahip, tarih, durum]
+                    var zaman = log[3].split(' ')[1]; // Sadece saati al
+                    var ikon = (log[4] == 'ONAYLANDI') ? '✅' : '❌';
+                    
+                    rows += '<tr>' +
+                        '<td>' + zaman + '</td>' +
+                        '<td><strong>' + log[1] + '</strong></td>' +
+                        '<td>' + ikon + '</td>' +
+                        '<td><button onclick="logdanEkle(\'' + log[1] + '\')" style="background:#2ecc71; color:white; border:none; border-radius:3px; cursor:pointer; padding:5px 10px;">Ekle (+)</button></td>' +
+                        '</tr>';
+                });
+                $('#log_table tbody').html(rows);
+            });
+        }, 1000);
+        // Araçları Listele
+function araclariGetir() {
+    $.getJSON('/api/kayitli_araclar', function(data) {
+        var rows = '';
+        $.each(data, function(index, arac) {
+            // arac: [id, plaka, sahip, durum]
+            rows += '<tr>' +
+                    '<td><strong>' + arac[1] + '</strong></td>' +
+                    '<td>' + arac[2] + '</td>' +
+                    '<td><button onclick="aracSil(' + arac[0] + ')" style="background:red; color:white; border:none; border-radius:5px; cursor:pointer; padding:5px 10px;">X</button>' +
+                    '<button onclick="plakaDuzenle(\'' + arac[2] + '\', \'' + arac[1] + '\')" style="background-color: #f39c12; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; margin-left: 5px;">Düzenle</button></td>' +
+                    '</tr>';
+        });
+        $('#arac_tablosu tbody').html(rows);
+    });
+}
+
+// Yeni Araç Ekle
+function aracEkle() {
+    var plaka = $('#yeni_plaka').val();
+    var sahip = $('#yeni_sahip').val();
+    
+    if(!plaka) { alert("Lütfen plaka girin!"); return; }
+
+    $.ajax({
+        url: '/api/arac_ekle',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ plaka: plaka, sahip: sahip }),
+        success: function(response) {
+            alert(response.message);
+            $('#yeni_plaka').val('');
+            $('#yeni_sahip').val('');
+            araclariGetir(); // Listeyi yenile
+        }
+    });
+}
+
+// Araç Sil
+function aracSil(id) {
+    if(confirm("Bu aracı silmek istediğinize emin misiniz?")) {
+        $.ajax({
+            url: '/api/arac_sil',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: id }),
+            success: function(response) {
+                araclariGetir(); // Listeyi yenile
+            }
+        });
+    }
+}
+
+// Sayfa ilk açıldığında veya menü değiştiğinde listeyi çek
+$(document).ready(function() {
+    araclariGetir();
+});
+
+function plakaDuzenle(sahip, eskiPlaka) {
+    let yeniPlaka = prompt(`${sahip} isimli kullanıcı için yeni plakayı giriniz:`, eskiPlaka);
+    
+    if (yeniPlaka && yeniPlaka !== eskiPlaka) {
+        fetch('/api/arac_guncelle', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sahip: sahip, plaka: yeniPlaka })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert("Plaka başarıyla güncellendi!");
+                location.reload(); 
+            } else {
+                alert("Hata: " + data.message);
+            }
+        });
+    }
+}
+
+function topluEkle() {
+    var fileInput = document.getElementById('csvDosyasi');
+    var file = fileInput.files[0];
+    
+    if (!file) {
+        alert("Lütfen önce bir .csv dosyası seçin!");
+        return;
+    }
+    
+    var formData = new FormData();
+    formData.append("file", file);
+    
+    fetch('/api/toplu_ekle', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert(data.message);
+            location.reload(); 
+        } else {
+            alert("Hata: " + data.message);
+        }
+    })
+    .catch(error => {
+        alert("Dosya yüklenirken bir hata oluştu.");
+    });
+}
+
+let guncelMod = "GECIS_KONTROL"; // Varsayılan başlangıç modu
+
+// Sayfa ilk açıldığında arka plandan (Python'dan) mevcut modu öğren ve butonu boya
+window.addEventListener('load', function() {
+    fetch('/api/mevcut_mod')
+        .then(response => response.json())
+        .then(data => {
+            guncelMod = data.mod;
+            butonGorunumunuGuncelle();
+        });
+});
+
+// Butonun rengini ve yazısını ayarlayan yardımcı fonksiyon
+function butonGorunumunuGuncelle() {
+    let btn = document.getElementById("modButonu");
+    if (guncelMod === "GECIS_KONTROL") {
+        btn.style.backgroundColor = "#2ecc71"; // Yeşil renk
+        btn.innerHTML = "🟢 GEÇİŞ KONTROL (Bariyer Açılır)";
+    } else {
+        btn.style.backgroundColor = "#e74c3c"; // Kırmızı renk
+        btn.innerHTML = "🔴 SADECE KAYIT (Bariyer Açılmaz)";
+    }
+}
+
+// Butona tıklandığında çalışacak ana fonksiyon
+function moduDegistir() {
+    // Eğer mod yeşilse kırmızı yap, kırmızıysa yeşil yap
+    let yeniMod = (guncelMod === "GECIS_KONTROL") ? "SADECE_KAYIT" : "GECIS_KONTROL";
+
+    fetch('/api/mod_degistir', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mod: yeniMod })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            guncelMod = yeniMod;
+            butonGorunumunuGuncelle(); // Renkleri anında değiştir
+        } else {
+            alert("Hata: " + data.message);
+        }
+    });
+}
+
+// Loglardan tek tıkla izinli araç ekleme fonksiyonu
+function logdanEkle(plaka) {
+    let isim = prompt(plaka + " plakalı araç için bir isim/açıklama girin:", "Sonradan Eklendi");
+    
+    if (isim) {
+        fetch('/api/logdan_yetkilendir', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ plaka: plaka, sahip: isim })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert(data.message);
+                location.reload(); // İşlem bitince tabloyu yenile
+            } else {
+                alert("Hata: " + data.message);
+            }
+        });
+    }
+}
+
+// Saat aralığına göre toplu yetkilendirme fonksiyonu
+function saatleYetkilendir() {
+    let baslangic = document.getElementById("baslangicTarihi").value;
+    let bitis = document.getElementById("bitisTarihi").value;
+
+    // HTML inputu "T" harfi koyar (Örn: 2026-04-17T15:30), bunu veritabanına uyumlu boşlukla değiştiriyoruz
+    baslangic = baslangic.replace("T", " ");
+    bitis = bitis.replace("T", " ");
+
+    if(!baslangic || !bitis) {
+        alert("Lütfen hem başlangıç hem de bitiş saatlerini seçin!");
+        return;
+    }
+
+    if(confirm(baslangic + " ile " + bitis + " arasındaki tüm yeni araçlar kalıcı olarak izinli listesine eklenecek. Emin misiniz?")) {
+        fetch('/api/tarihe_gore_yetkilendir', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ baslangic: baslangic, bitis: bitis })
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            if(data.status === 'success') {
+                location.reload(); 
+            }
+        });
+    }
+}
+
+    </script>
+</body>
+</html>
