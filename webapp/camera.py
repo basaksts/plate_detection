@@ -6,7 +6,7 @@ class VideoCamera:
         # Şimdilik bilgisayar kamerasını kullanıyoruz.
         # IP kamera bağlanınca burası RTSP URL ile değiştirilecek.
         self.video = cv2.VideoCapture(0)
->>>>>>> Stashed changes
+
 
     def get_frame(self):
         success, image = self.video.read()
