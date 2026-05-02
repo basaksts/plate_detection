@@ -1,50 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background: #0f172a;
-    color: white;
-    font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f0df;
+    color: #12545a;
 }
 
-.container {
-    width: 90%;
-    margin: auto;
-}
-
-h1 {
-    text-align: center;
-    margin: 20px;
-}
-
-.row {
+.topbar {
+    width: 100%;
+    height: 42px;
+    background: #c76526;
+    color: #f5f0df;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px;
+}
+
+.topbar h1 {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.menu-btn,
+.logout-btn {
+    background: transparent;
+    border: none;
+    color: #f5f0df;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.page {
+    min-height: calc(100vh - 42px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 28px;
+}
+
+.nav-panel {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.nav-panel button {
+    background: #138792;
+    color: #f5f0df;
+    border: none;
+    border-radius: 12px;
+    height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.nav-panel button:hover {
+    background: #0f6f78;
+}
+
+.content-page {
+    display: none;
+    width: 100%;
+    justify-content: center;
+}
+
+.content-page.active {
+    display: flex;
 }
 
 .card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-    flex: 1;
+    background: #f5f0df;
+    border: 2px solid #4d9898;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
-.camera img {
+.detection-card {
+    width: 260px;
+}
+
+.table-card {
+    width: 330px;
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #4d9898;
+    font-size: 17px;
+    color: #14828b;
+}
+
+label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #c76526;
+}
+
+.plate-box {
     width: 100%;
-    border-radius: 10px;
+    height: 38px;
+    background: white;
+    border: 2px solid #d97942;
+    border-radius: 6px;
+    margin: 5px 0 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1px;
 }
 
-.plate {
-    font-size: 40px;
-    text-align: center;
+.camera-box {
+    width: 100%;
+    height: 170px;
+    border: 1px solid #4d9898;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ddd;
 }
 
-.status {
-    text-align: center;
-    font-size: 20px;
+.camera-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.status-text {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #333;
 }
 
 .authorized {
-    color: #22c55e;
+    color: #148c2e;
+    font-weight: bold;
 }
 
 .unauthorized {
-    color: #ef4444;
+    color: #d62828;
+    font-weight: bold;
+}
+
+.vehicle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+.add-title {
+    color: #d04c2f;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.vehicle-form input {
+    height: 28px;
+    border: 1px solid #9dc1bd;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+.save-btn {
+    background: #1fc14f;
+    color: white;
+    border: none;
+    height: 28px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    color: #333;
+}
+
+th {
+    color: #d04c2f;
+    text-align: left;
+    padding: 5px;
+    border-bottom: 1px solid #9dc1bd;
+}
+
+td {
+    padding: 5px;
+    border-bottom: 1px solid #e3d9bf;
+}
+
+.log-ok {
+    color: #24b24a;
+    font-weight: bold;
+}
+
+.log-no {
+    color: #d62828;
+    font-weight: bold;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #e63946;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .nav-panel {
+        width: 70%;
+    }
+
+    .detection-card,
+    .table-card {
+        width: 72%;
+        min-width: 260px;
+    }
 }
