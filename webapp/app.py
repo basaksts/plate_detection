@@ -5,9 +5,24 @@ from detector import detect_plate
 app = Flask(__name__)
 
 camera = VideoCamera()
-current_plate = "-"
-current_status = "Bekleniyor"
-allowed = False
+
+current_plate = "34AB1234"
+current_status = "GİRİŞ İZNİ"
+allowed = True
+
+mock_logs = [
+    {"time": "12:42:08", "plate": "34AB1234", "allowed": True},
+    {"time": "12:39:11", "plate": "34AVEC01", "allowed": False},
+    {"time": "12:36:44", "plate": "34MEF330", "allowed": True},
+    {"time": "12:34:22", "plate": "35ABC123", "allowed": False},
+    {"time": "12:31:05", "plate": "34AB1234", "allowed": True},
+]
+
+mock_vehicles = [
+    {"plate": "34AB1234", "owner": "Başak Serttaş"},
+    {"plate": "34MEF330", "owner": "Mehmet Aksoy"},
+    {"plate": "35NMB129", "owner": "Samet Yılmaz"},
+]
 
 
 def gen(camera):
@@ -19,10 +34,11 @@ def gen(camera):
         if frame is None:
             continue
 
-        plate, allowed = detect_plate(frame)
+        plate, allowed_result = detect_plate(frame)
 
         if plate:
             current_plate = plate
+            allowed = allowed_result
             current_status = "GİRİŞ İZNİ" if allowed else "YETKİSİZ"
 
         yield (
@@ -38,7 +54,8 @@ def index():
         plate=current_plate,
         status=current_status,
         status_class="authorized" if allowed else "unauthorized",
-        logs=[],
+        logs=mock_logs,
+        vehicles=mock_vehicles,
     )
 
 
