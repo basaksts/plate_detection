@@ -1,3 +1,10 @@
+
+# Bu dosya aşağıdaki test dokümantasyonu maddesini karşılamak için hazırlanmıştır:
+# TC-01-05 - OCR pipeline “1 örnek görüntü” üzerinde sonuç üretiyor mu?
+#
+# Not:
+# Gerçek OCR doğruluğu yerine şu aşamada pipeline'ın örnek/sentetik görüntüyle çalışması kontrol edilir.
+
 from utils.logger import log_test_result
 import subprocess
 import json
@@ -32,4 +39,6 @@ def test_ocr_pipeline():
         log_test_result(test_id, "PASS")
 
     except Exception as e:
+
         log_test_result(test_id, "FAIL", str(e))
+
