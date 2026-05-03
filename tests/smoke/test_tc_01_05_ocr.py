@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 
 # Bu dosya aşağıdaki test dokümantasyonu maddesini karşılamak için hazırlanmıştır:
 # TC-01-05 - OCR pipeline “1 örnek görüntü” üzerinde sonuç üretiyor mu?
@@ -41,5 +39,6 @@ def test_ocr_pipeline():
         log_test_result(test_id, "PASS")
 
     except Exception as e:
+
         log_test_result(test_id, "FAIL", str(e))
->>>>>>> Stashed changes
+
