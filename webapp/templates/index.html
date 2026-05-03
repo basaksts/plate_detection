@@ -8,44 +8,120 @@
 
 <body>
     <header class="topbar">
-        <button class="menu-btn">☰</button>
-        <h1>HOMEPAGE</h1>
-        <button class="logout-btn">↪</button>
+        <button class="icon-btn">☰</button>
+        <h1 id="page-title">HOMEPAGE</h1>
+        <button class="icon-btn">↪</button>
     </header>
 
     <main class="page">
-
-        <section class="nav-panel">
-            <button onclick="showPage('plate-page')">plate detection</button>
-            <button onclick="showPage('logs-page')">past entrances</button>
-            <button onclick="showPage('vehicles-page')">authorized vehicles</button>
+        <section class="mode-banner">
+            <span class="mode-dot"></span>
+            <span>Mode: DEMO</span>
         </section>
 
-        <!-- Plate Detection Page -->
+        <section class="nav-panel">
+            <button class="nav-btn active" onclick="showPage('plate-page', this, 'PLATE DETECTION')">
+                plate detection
+            </button>
+
+            <button class="nav-btn" onclick="showPage('logs-page', this, 'PAST ENTRANCES')">
+                past entrances
+            </button>
+
+            <button class="nav-btn" onclick="showPage('vehicles-page', this, 'AUTHORIZED VEHICLES')">
+                authorized vehicles
+            </button>
+
+            <button class="nav-btn" onclick="showPage('status-page', this, 'SYSTEM STATUS')">
+                system status
+            </button>
+        </section>
+
+        <!-- PLATE DETECTION -->
         <section id="plate-page" class="content-page active">
             <div class="card detection-card">
                 <h2>PLATE DETECTION</h2>
 
                 <label>SON OKUNAN PLAKA</label>
-                <div class="plate-box">{{ plate }}</div>
+                <div id="plateBox" class="plate-box">{{ plate }}</div>
 
                 <div class="camera-box">
-                    <img src="{{ url_for('video_feed') }}" alt="Canlı Kamera">
+                    <img src="{{ url_for('video_feed') }}" alt="Canlı Kamera"
+                         onerror="showCameraFallback()">
+                    <div id="cameraFallback" class="camera-fallback">
+                        Kamera bağlantısı bekleniyor...
+                    </div>
                 </div>
 
-                <p class="status-text">
-                    Durum:
-                    <span class="{{ status_class }}">{{ status }}</span>
-                </p>
+                <div class="detection-info">
+                    <p>
+                        Durum:
+                        <span id="statusText" class="{{ status_class }}">{{ status }}</span>
+                    </p>
+
+                    <p>
+                        Güven:
+                        <span id="confidenceText">%{{ confidence }}</span>
+                    </p>
+
+                    <p>
+                        Okuma Saati:
+                        <span id="timeText">{{ detection_time }}</span>
+                    </p>
+                </div>
+
+                <div class="mini-log">
+                    <h3>Son Okumalar</h3>
+                    <ul id="recentReadings">
+                        {% for log in logs[:5] %}
+                        <li>
+                            <span>{{ log.time }}</span>
+                            <strong>{{ log.plate }}</strong>
+                            {% if log.allowed %}
+                                <em class="authorized">GİRİŞ İZNİ</em>
+                            {% else %}
+                                <em class="unauthorized">YETKİSİZ</em>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Past Entrances Page -->
+        <!-- PAST ENTRANCES -->
         <section id="logs-page" class="content-page">
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span>Toplam Geçiş</span>
+                    <strong>{{ total_logs }}</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Yetkili</span>
+                    <strong class="authorized">{{ allowed_count }}</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span>Yetkisiz</span>
+                    <strong class="unauthorized">{{ denied_count }}</strong>
+                </div>
+            </div>
+
             <div class="card table-card">
                 <h2>PAST ENTRANCES</h2>
 
-                <table>
+                <div class="filter-row">
+                    <input id="logSearch" type="text" placeholder="Plaka ara..." onkeyup="filterLogs()">
+
+                    <select id="statusFilter" onchange="filterLogs()">
+                        <option value="all">Tümü</option>
+                        <option value="allowed">Yetkili</option>
+                        <option value="denied">Yetkisiz</option>
+                    </select>
+                </div>
+
+                <table id="logsTable">
                     <thead>
                         <tr>
                             <th>Saat</th>
@@ -56,7 +132,7 @@
 
                     <tbody>
                         {% for log in logs %}
-                        <tr>
+                        <tr data-status="{% if log.allowed %}allowed{% else %}denied{% endif %}">
                             <td>{{ log.time }}</td>
                             <td>{{ log.plate }}</td>
                             <td>
@@ -73,26 +149,24 @@
             </div>
         </section>
 
-        <!-- Authorized Vehicles Page -->
+        <!-- AUTHORIZED VEHICLES -->
         <section id="vehicles-page" class="content-page">
             <div class="card table-card">
                 <h2>AUTHORIZED VEHICLES</h2>
 
-                <form class="vehicle-form">
+                <div class="disabled-form">
                     <p class="add-title">+ Add New Vehicle</p>
-
-                    <input type="text" placeholder="Plate (örn: 34AB1234)">
-                    <input type="text" placeholder="Car Owner Name Surname">
-
-                    <button type="button" class="save-btn">SAVE</button>
-                </form>
+                    <input type="text" placeholder="Plate (örn: 34AB1234)" disabled>
+                    <input type="text" placeholder="Car Owner Name Surname" disabled>
+                    <button type="button" disabled>SAVE</button>
+                    <small>Veritabanı bağlantısı sonrası aktif edilecek.</small>
+                </div>
 
                 <table>
                     <thead>
                         <tr>
                             <th>Plaka</th>
                             <th>Sahip</th>
-                            <th>İşlem</th>
                         </tr>
                     </thead>
 
@@ -101,7 +175,6 @@
                         <tr>
                             <td>{{ vehicle.plate }}</td>
                             <td>{{ vehicle.owner }}</td>
-                            <td><button class="delete-btn">■</button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -109,15 +182,108 @@
             </div>
         </section>
 
+        <!-- SYSTEM STATUS -->
+        <section id="status-page" class="content-page">
+            <div class="card status-card">
+                <h2>SYSTEM STATUS</h2>
+
+                {% for item in system_status %}
+                <div class="status-item">
+                    <div>
+                        <span>{{ item.name }}</span>
+                        <strong>{{ item.value }}</strong>
+                    </div>
+
+                    <span class="status-dot {{ item.state }}"></span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
     </main>
 
     <script>
-        function showPage(pageId) {
+        const demoDetections = [
+            { plate: "34AB1234", status: "GİRİŞ İZNİ", allowed: true, confidence: 94 },
+            { plate: "34AVEC01", status: "YETKİSİZ", allowed: false, confidence: 88 },
+            { plate: "35NMB129", status: "GİRİŞ İZNİ", allowed: true, confidence: 91 },
+            { plate: "34MEF330", status: "GİRİŞ İZNİ", allowed: true, confidence: 96 },
+            { plate: "42KRM13", status: "YETKİSİZ", allowed: false, confidence: 84 }
+        ];
+
+        function showPage(pageId, button, title) {
             const pages = document.querySelectorAll(".content-page");
             pages.forEach(page => page.classList.remove("active"));
 
             document.getElementById(pageId).classList.add("active");
+
+            const buttons = document.querySelectorAll(".nav-btn");
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            button.classList.add("active");
+            document.getElementById("page-title").textContent = title;
         }
+
+        function showCameraFallback() {
+            document.getElementById("cameraFallback").style.display = "flex";
+        }
+
+        function updateDemoDetection() {
+            const randomItem = demoDetections[Math.floor(Math.random() * demoDetections.length)];
+
+            const now = new Date();
+            const time = now.toLocaleTimeString("tr-TR", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+
+            const plateBox = document.getElementById("plateBox");
+            const statusText = document.getElementById("statusText");
+            const confidenceText = document.getElementById("confidenceText");
+            const timeText = document.getElementById("timeText");
+
+            plateBox.textContent = randomItem.plate;
+            statusText.textContent = randomItem.status;
+            confidenceText.textContent = "%" + randomItem.confidence;
+            timeText.textContent = time;
+
+            statusText.className = randomItem.allowed ? "authorized" : "unauthorized";
+
+            const recentReadings = document.getElementById("recentReadings");
+            const item = document.createElement("li");
+
+            item.innerHTML = `
+                <span>${time}</span>
+                <strong>${randomItem.plate}</strong>
+                <em class="${randomItem.allowed ? "authorized" : "unauthorized"}">
+                    ${randomItem.status}
+                </em>
+            `;
+
+            recentReadings.prepend(item);
+
+            if (recentReadings.children.length > 5) {
+                recentReadings.removeChild(recentReadings.lastElementChild);
+            }
+        }
+
+        function filterLogs() {
+            const searchValue = document.getElementById("logSearch").value.toUpperCase();
+            const statusValue = document.getElementById("statusFilter").value;
+            const rows = document.querySelectorAll("#logsTable tbody tr");
+
+            rows.forEach(row => {
+                const plate = row.children[1].textContent.toUpperCase();
+                const status = row.dataset.status;
+
+                const plateMatches = plate.includes(searchValue);
+                const statusMatches = statusValue === "all" || statusValue === status;
+
+                row.style.display = plateMatches && statusMatches ? "" : "none";
+            });
+        }
+
+        setInterval(updateDemoDetection, 4000);
     </script>
 </body>
 </html>
