@@ -1,0 +1,10 @@
+<<<<<<< Updated upstream
+=======
+pytest
+pytest-html
+pytest-json-report
+requests
+flask
+numpy
+opencv-python
+>>>>>>> Stashed changes

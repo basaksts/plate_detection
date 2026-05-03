@@ -1,3 +1,10 @@
+
+# Bu dosya aşağıdaki test dokümantasyonu maddesini karşılamak için hazırlanmıştır:
+# TC-01-03 - Veri okuma → paketleme → gönderme akıyor mu?
+#
+# Not:
+# Gerçek backend endpointleri tamamlanana kadar mock/temsili veri akışıyla çalıştırılmalıdır.
+
 from utils.logger import log_test_result
 import requests
 

@@ -9,6 +9,9 @@ TC-07-05  Gün sonu rapor/export (veriler endpoint'i)
 TC-07-06  Mod değiştirme akışı uçtan uca
 """
 
+# Not:
+# TC-07-01 ve TC-07-03 gerçek kamera/backend bağlantısı tamamlandıktan sonra ayrıca eklenmelidir.
+
 import sys
 import os
 import re
