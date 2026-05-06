@@ -1,0 +1,76 @@
+/* GENEL AYARLAR - Bej Arka Plan */
+body {
+    background-color: #F8F5E6; 
+    font-family: 'Verdana', sans-serif;
+    margin: 0; padding: 0;
+    color: #333;
+}
+
+/* HEADER - Turuncu */
+.app-header {
+    background-color: #C05826; 
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.app-header h1 { margin: 0; font-size: 18px; }
+
+/* BUTONLAR - Petrol Yeşili */
+.app-btn {
+    background-color: #1F7A8C; 
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+.app-btn:hover { background-color: #165b69; }
+
+/* KARTLAR */
+.container { padding: 15px; max-width: 500px; margin: 0 auto; }
+.content-card {
+    background-color: #F8F5E6;
+    border: 2px solid #1F7A8C;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 20px;
+}
+.section-title {
+    color: #1F7A8C;
+    border-bottom: 2px solid #1F7A8C;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* PLAKA KUTUSU */
+.display-box {
+    background-color: #FFF;
+    border: 3px solid #C05826;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* KAMERA */
+.camera-frame img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #333;
+}
+
+/* TABLO */
+.log-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.log-table th { text-align: left; color: #C05826; border-bottom: 2px solid #ccc; }
+.log-table td { padding: 8px; border-bottom: 1px solid #ddd; }
+
