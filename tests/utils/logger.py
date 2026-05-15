@@ -3,38 +3,49 @@ from datetime import datetime
 from pathlib import Path
 
 
-RESULTS_DIR = Path(__file__).resolve().parents[1] / "test_results"
-RESULTS_FILE = RESULTS_DIR / "results.json"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+RESULTS_DIR = PROJECT_ROOT / "test_results"
+RESULTS_FILE = RESULTS_DIR / "test_results.json"
 
 
-def log_test_result(test_id, status, details=None, metrics=None):
+def log_test_result(test_id, status, details="", metrics=None):
     """
-    Test sonucunu JSON dosyasına ekler.
-    status: PASS / FAIL / SKIP
+    Test sonuçlarını JSON dosyasına ekler.
+    
+    Parametreler:
+    - test_id: TC-00-01 gibi test case numarası
+    - status: PASS / FAIL / SKIP
+    - details: test hakkında kısa açıklama
+    - metrics: doğruluk, süre, kayıt sayısı gibi ek ölçümler
     """
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    RESULTS_DIR.mkdir(exist_ok=True)
+
+    if metrics is None:
+        metrics = {}
 
     record = {
-        "test_id": test_id,
-        "status": status,
+        "test_id": str(test_id),
+        "status": str(status),
         "timestamp": datetime.now().isoformat(timespec="seconds"),
-        "details": details or "",
-        "metrics": metrics or {},
+        "details": str(details),
+        "metrics": metrics,
     }
 
     if RESULTS_FILE.exists():
         try:
-            with open(RESULTS_FILE, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            existing = json.loads(RESULTS_FILE.read_text(encoding="utf-8"))
+            if not isinstance(existing, list):
+                existing = []
         except json.JSONDecodeError:
-            data = []
+            existing = []
     else:
-        data = []
+        existing = []
 
-    data.append(record)
+    existing.append(record)
 
-    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    RESULTS_FILE.write_text(
+        json.dumps(existing, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
 
     return record
-

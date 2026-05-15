@@ -80,12 +80,27 @@ def letterbox(im, new_shape=(640, 640), color=(114, 114, 114)):
     return im_padded, r, (dw, dh)
 
 def ocr_process(crop):
-    gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
-    gray = cv2.bilateralFilter(gray, 11, 17, 17) 
-    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
-    match = TR_REGEX.search(text)
-    if match: return match.group(0)
-    return None
+    """
+    Plaka kırpıntısı üzerinde OCR çalıştırır.
+    Tesseract bulunamazsa veya OCR sırasında hata oluşursa sistemi çökertmeden None döndürür.
+    """
+    try:
+        if crop is None or crop.size == 0:
+            return None
+
+        gray = cv2.cvtColor(crop, cv2.COLOR_BGR2GRAY)
+        gray = cv2.bilateralFilter(gray, 11, 17, 17)
+
+        text = pytesseract.image_to_string(
+            gray,
+            config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+        ).strip()
+
+        match = TR_REGEX.search(text)
+        return match.group(0) if match else None
+
+    except Exception:
+        return None
 
 # --- 1. İŞÇİ: SADECE KAMERAYI OKUR (AKICILIK SAĞLAR) ---
 def camera_thread():

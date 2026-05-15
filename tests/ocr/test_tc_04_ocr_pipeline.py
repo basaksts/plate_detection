@@ -20,6 +20,22 @@ import cv2
 import numpy as np
 import pytest
 
+
+import shutil
+import pytesseract
+
+
+def has_tesseract():
+    cmd = getattr(pytesseract.pytesseract, "tesseract_cmd", "")
+
+    if cmd and os.path.exists(cmd):
+        return True
+
+    if shutil.which("tesseract"):
+        return True
+
+    return False
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -109,6 +125,11 @@ class TestTC0401_Letterbox:
 # ════════════════════════════════════════════════════════════
 # TC-04-06  Zor örnek seti — pipeline çökmemeli
 # ════════════════════════════════════════════════════════════
+@pytest.mark.skipif(
+    not has_tesseract(),
+    reason="Tesseract executable is not installed in this local test environment."
+)
+
 class TestTC0406_HardCases:
 
     @pytest.mark.parametrize("brightness,label", [
@@ -190,6 +211,11 @@ class TestTC0406_HardCases:
 # ════════════════════════════════════════════════════════════
 # TC-04-07  Pipeline latency — frame başına süre
 # ════════════════════════════════════════════════════════════
+@pytest.mark.skipif(
+    not has_tesseract(),
+    reason="Tesseract executable is not installed in this local test environment."
+)
+
 class TestTC0407_Latency:
     """
     LATENCY_LIMIT: Raspberry Pi'da gerçekçi olabilmesi için
@@ -260,6 +286,11 @@ class TestTC0407_Latency:
 # ════════════════════════════════════════════════════════════
 # TC-04-09  Edge case aydınlatma
 # ════════════════════════════════════════════════════════════
+@pytest.mark.skipif(
+    not has_tesseract(),
+    reason="Tesseract executable is not installed in this local test environment."
+)
+
 class TestTC0409_LightingEdgeCase:
 
     def test_full_black_no_nan(self):
@@ -312,6 +343,11 @@ class TestTC0409_LightingEdgeCase:
 # ════════════════════════════════════════════════════════════
 # TC-04-10  Plaka bulunamadı → doğru davranış
 # ════════════════════════════════════════════════════════════
+@pytest.mark.skipif(
+    not has_tesseract(),
+    reason="Tesseract executable is not installed in this local test environment."
+)
+
 class TestTC0410_PlateNotFound:
 
     def test_ocr_on_non_plate_returns_none(self, no_plate_image):

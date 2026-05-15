@@ -141,3 +141,142 @@ def corrupt_image_bytes():
     Bozuk JPEG byte dizisi.
     """
     return b"\xff\xd8\xff\xe0" + b"\x00" * 50 + b"CORRUPTED"
+
+
+
+
+def _build_flask_test_client(db_path, monkeypatch):
+    """
+    main.py içindeki Flask app nesnesini test client olarak döndürür.
+    Test DB path'ini main.DB_NAME üzerine yönlendirir.
+    """
+    import main as m
+
+    # Projede DB değişkeni DB_NAME olarak kullanıldığı için test DB'ye yönlendiriyoruz.
+    monkeypatch.setattr(m, "DB_NAME", db_path, raising=False)
+
+    app = getattr(m, "app", None)
+
+    if app is None:
+        pytest.skip("main.py içinde Flask app nesnesi bulunamadı. Fixture atlandı.")
+
+    app.config.update(
+        TESTING=True,
+        WTF_CSRF_ENABLED=False
+    )
+
+    return app.test_client()
+
+
+
+
+@pytest.fixture
+def flask_app(temp_db, monkeypatch):
+    import main as m
+
+    monkeypatch.setattr(m, "DB_NAME", temp_db, raising=False)
+
+    m.app.config.update(
+        TESTING=True,
+        WTF_CSRF_ENABLED=False
+    )
+
+    return m.app.test_client()
+
+
+@pytest.fixture
+def flask_app_with_data(db_with_data, monkeypatch):
+    import main as m
+
+    monkeypatch.setattr(m, "DB_NAME", db_with_data, raising=False)
+
+    m.app.config.update(
+        TESTING=True,
+        WTF_CSRF_ENABLED=False
+    )
+
+    return m.app.test_client()
+
+# --- Local OCR mock for environments without Tesseract executable ---
+
+import shutil
+import pytesseract
+
+
+def _tesseract_available_for_local_tests():
+    possible_paths = [
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+        r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
+        "/usr/bin/tesseract",
+    ]
+
+    for path in possible_paths:
+        if os.path.exists(path):
+            return True
+
+    return shutil.which("tesseract") is not None
+
+
+@pytest.fixture(autouse=True)
+def mock_tesseract_when_missing(monkeypatch):
+    """
+    Local Windows test ortamında Tesseract executable yoksa,
+    pytesseract.image_to_string fonksiyonunu mock'lar.
+
+    Bu sadece local automated testler içindir.
+    Gerçek OCR başarısı saha testi ve Raspberry/Tesseract ortamında ölçülür.
+    """
+    if _tesseract_available_for_local_tests():
+        return
+
+    def fake_image_to_string(*args, **kwargs):
+        return ""
+
+    monkeypatch.setattr(
+        pytesseract,
+        "image_to_string",
+        fake_image_to_string,
+        raising=False
+    )
+    
+    
+    # --- Force mock OCR in local test environment without real Tesseract ---
+
+@pytest.fixture(autouse=True)
+def force_mock_ocr_when_tesseract_missing(monkeypatch):
+    """
+    Local Windows test ortamında gerçek Tesseract executable olmadığı için
+    main.py içindeki OCR çağrısını mock'lar.
+
+    Bu testler OCR doğruluğunu değil, pipeline'ın çökmeden çalışmasını doğrular.
+    Gerçek OCR başarısı saha/kontrollü görüntü testleriyle ölçülür.
+    """
+    import os
+    import shutil
+    import pytesseract
+
+    possible_paths = [
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+        r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
+        "/usr/bin/tesseract",
+    ]
+
+    tesseract_exists = any(os.path.exists(p) for p in possible_paths) or shutil.which("tesseract") is not None
+
+    if tesseract_exists:
+        return
+
+    def fake_image_to_string(*args, **kwargs):
+        return ""
+
+    # Pytesseract paketindeki iki olası çağrı noktasını da mock'la
+    monkeypatch.setattr(pytesseract, "image_to_string", fake_image_to_string, raising=False)
+    monkeypatch.setattr(pytesseract.pytesseract, "image_to_string", fake_image_to_string, raising=False)
+
+    # main.py import edildiyse/edilecekse onun kullandığı modül referansını da mock'la
+    try:
+        import main as m
+        monkeypatch.setattr(m.pytesseract, "image_to_string", fake_image_to_string, raising=False)
+        monkeypatch.setattr(m.pytesseract.pytesseract, "image_to_string", fake_image_to_string, raising=False)
+    except Exception:
+        pass

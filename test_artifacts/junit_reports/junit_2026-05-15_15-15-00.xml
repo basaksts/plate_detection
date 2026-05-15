@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="6" failures="0" skipped="0" tests="6" time="6.124" timestamp="2026-05-15T15:15:01.372409+03:00" hostname="DESKTOP-8KPERNF"><testcase classname="" name="tests.backend.test_tc_05_sqlite_mock_backend" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_sqlite_mock_backend.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\backend\test_tc_05_sqlite_mock_backend.py:14: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase><testcase classname="" name="tests.ocr.test_tc_04_mock_image_pipeline" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\ocr\test_tc_04_mock_image_pipeline.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\ocr\test_tc_04_mock_image_pipeline.py:14: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase><testcase classname="" name="tests.performance.test_tc_08_mock_performance" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\performance\test_tc_08_mock_performance.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\performance\test_tc_08_mock_performance.py:13: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase><testcase classname="" name="tests.smoke.test_tc_01_smoke_mock" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\smoke\test_tc_01_smoke_mock.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\smoke\test_tc_01_smoke_mock.py:30: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase><testcase classname="" name="tests.unit.test_tc_00_test_infrastructure" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_00_test_infrastructure.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_tc_00_test_infrastructure.py:17: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase><testcase classname="" name="tests.unit.test_tc_02_unit_core" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_unit_core.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\unit\test_tc_02_unit_core.py:15: in &lt;module&gt;
+    from tests.utils.logger import log_test_result
+E   ModuleNotFoundError: No module named 'tests.utils'</error></testcase></testsuite></testsuites>

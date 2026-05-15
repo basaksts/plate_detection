@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="34" failures="36" skipped="0" tests="108" time="5.547" timestamp="2026-05-15T15:18:58.945507+03:00" hostname="DESKTOP-8KPERNF"><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_create_vehicle" time="0.001"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 38&#10;      def test_create_vehicle(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:38&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 38
+      def test_create_vehicle(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:38</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_read_vehicle_in_list" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 54&#10;      def test_read_vehicle_in_list(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:54&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 54
+      def test_read_vehicle_in_list(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:54</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_update_vehicle_plate" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 71&#10;      def test_update_vehicle_plate(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:71&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 71
+      def test_update_vehicle_plate(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:71</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_delete_vehicle" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 92&#10;      def test_delete_vehicle(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:92&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 92
+      def test_delete_vehicle(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:92</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_update_missing_fields_returns_400" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 112&#10;      def test_update_missing_fields_returns_400(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:112&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 112
+      def test_update_missing_fields_returns_400(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:112</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_logs_ordered_by_id_desc" time="0.044" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_filter_by_durum" time="0.019" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_limit_100_logs" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 163&#10;      def test_limit_100_logs(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:163&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 163
+      def test_limit_100_logs(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:163</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_distinct_plates_in_logs" time="0.021" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_valid_csv_upload" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 200&#10;      def test_valid_csv_upload(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:200&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 200
+      def test_valid_csv_upload(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:200</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_semicolon_csv_upload" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 225&#10;      def test_semicolon_csv_upload(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:225&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 225
+      def test_semicolon_csv_upload(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:225</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_no_file_returns_400" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 245&#10;      def test_no_file_returns_400(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:245&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 245
+      def test_no_file_returns_400(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:245</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_header_row_skipped" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 257&#10;      def test_header_row_skipped(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:257&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 257
+      def test_header_row_skipped(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:257</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0508_Idempotency" name="test_duplicate_plate_not_doubled" time="0.001"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 287&#10;      def test_duplicate_plate_not_doubled(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:287&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 287
+      def test_duplicate_plate_not_doubled(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:287</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0508_Idempotency" name="test_logdan_yetkilendir_duplicate" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 305&#10;      def test_logdan_yetkilendir_duplicate(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:305&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 305
+      def test_logdan_yetkilendir_duplicate(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:305</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0509_Timestamp" name="test_log_entry_timestamp_format" time="0.019"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_05_backend_api.TestTC0509_Timestamp object at 0x00000221084CA410&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_log_entry_timestamp_forma0\\test_otopark.db'
+
+    def test_log_entry_timestamp_format(self, temp_db):
+        """log_entry() tarih alanı 'YYYY-MM-DD HH:MM:SS' formatında olmalı."""
+        test_id = "TC-05-09-a"
+&gt;       import main as m
+
+tests\backend\test_tc_05_backend_api.py:331: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0509_Timestamp" name="test_log_timestamp_not_in_future" time="0.026"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_05_backend_api.TestTC0509_Timestamp object at 0x00000221084CA7D0&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_log_timestamp_not_in_futu0\\test_otopark.db'
+
+    def test_log_timestamp_not_in_future(self, temp_db):
+        """Log zaman damgası şu anki zamandan büyük olmamalı."""
+        test_id = "TC-05-09-b"
+&gt;       import main as m
+
+tests\backend\test_tc_05_backend_api.py:353: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0511_RateLimit" name="test_flood_get_kayitli_araclar" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 386&#10;      def test_flood_get_kayitli_araclar(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:386&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 386
+      def test_flood_get_kayitli_araclar(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:386</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0511_RateLimit" name="test_flood_post_arac_ekle" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 402&#10;      def test_flood_post_arac_ekle(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:402&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 402
+      def test_flood_post_arac_ekle(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:402</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_data_persists_after_db_reconnect" time="0.012"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_05_backend_api.TestTC0513_DataPersistence object at 0x00000221084CB510&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_data_persists_after_db_re0\\test_otopark.db'
+
+    def test_data_persists_after_db_reconnect(self, temp_db):
+        """DB bağlantısı kapanıp yeniden açıldıktan sonra veriler kalmalı."""
+        test_id = "TC-05-13-a"
+&gt;       import main as m
+
+tests\backend\test_tc_05_backend_api.py:427: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_arac_persists_after_reconnect" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 448&#10;      def test_arac_persists_after_reconnect(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:448&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py, line 448
+      def test_arac_persists_after_reconnect(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\backend\test_tc_05_backend_api.py:448</error></testcase><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_multiple_writes_no_data_loss" time="0.015"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_05_backend_api.TestTC0513_DataPersistence object at 0x00000221084D4210&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_multiple_writes_no_data_l0\\test_otopark.db'
+
+    def test_multiple_writes_no_data_loss(self, temp_db):
+        """10 log yazıldıktan sonra tamamı DB'de görünmeli."""
+        test_id = "TC-05-13-c"
+&gt;       import main as m
+
+tests\backend\test_tc_05_backend_api.py:468: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_03_crud_create_read_delete" time="0.021" /><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_08_duplicate_plate_prevention" time="0.018" /><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_09_timestamp_format" time="0.020" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_same_plate_five_times_api" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 38&#10;      def test_same_plate_five_times_api(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:38&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 38
+      def test_same_plate_five_times_api(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:38</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_similarity_check_logic" time="0.001" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_pool_counter_picks_most_common" time="0.001" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_same_log_spam_prevention" time="0.014"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_07_e2e.TestTC0702_DuplicateVehicle object at 0x00000221084E9610&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_same_log_spam_prevention0\\test_otopark.db'
+
+    def test_same_log_spam_prevention(self, temp_db):
+        """Aynı plaka 10 saniye içinde iki kez log'a işlenmemeli (spam önleme)."""
+        test_id = "TC-07-02-spam"
+&gt;       import main as m
+
+tests\e2e\test_tc_07_e2e.py:87: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_none_crop_skipped" time="0.003"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x00000221084E9AD0&gt;
+
+    def test_none_crop_skipped(self):
+        """Sıfır boyutlu crop pipeline'ı durdurmamalı."""
+        test_id = "TC-07-04-none-crop"
+&gt;       import main as m
+
+tests\e2e\test_tc_07_e2e.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_corrupt_jpeg_bytes_no_crash" time="0.021" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_single_pixel_frame" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x00000221084EA710&gt;
+
+    def test_single_pixel_frame(self):
+        """1x1 piksel frame OCR'ı çökertmemeli."""
+        test_id = "TC-07-04-1x1"
+&gt;       import main as m
+
+tests\e2e\test_tc_07_e2e.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_letterbox_with_corrupt_shape" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x00000221084EAD90&gt;
+
+    def test_letterbox_with_corrupt_shape(self):
+        """Olağandışı boyutlu görüntü letterbox'ı çökertmemeli."""
+        test_id = "TC-07-04-odd-shape"
+&gt;       import main as m
+
+tests\e2e\test_tc_07_e2e.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_pipeline_continues_after_bad_frame" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x00000221084EB3D0&gt;
+
+    def test_pipeline_continues_after_bad_frame(self):
+        """Bozuk frame'den sonra gelen geçerli frame işlenebilmeli."""
+        test_id = "TC-07-04-recovery"
+&gt;       import main as m
+
+tests\e2e\test_tc_07_e2e.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_veriler_contains_all_fields" time="0.001"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 199&#10;      def test_veriler_contains_all_fields(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:199&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 199
+      def test_veriler_contains_all_fields(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:199</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_veriler_durum_values_valid" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 212&#10;      def test_veriler_durum_values_valid(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:212&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 212
+      def test_veriler_durum_values_valid(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:212</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_son_plaka_is_string" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 227&#10;      def test_son_plaka_is_string(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:227&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 227
+      def test_son_plaka_is_string(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:227</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_switch_to_sadece_kayit" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 245&#10;      def test_switch_to_sadece_kayit(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:245&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 245
+      def test_switch_to_sadece_kayit(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:245</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_switch_to_gecis_kontrol" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 264&#10;      def test_switch_to_gecis_kontrol(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:264&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 264
+      def test_switch_to_gecis_kontrol(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:264</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_invalid_mode_rejected" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 279&#10;      def test_invalid_mode_rejected(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:279&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 279
+      def test_invalid_mode_rejected(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:279</error></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_mode_persists_across_requests" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 292&#10;      def test_mode_persists_across_requests(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:292&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py, line 292
+      def test_mode_persists_across_requests(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\e2e\test_tc_07_e2e.py:292</error></testcase><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_04_09_black_white_edge_cases" time="0.053" /><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_04_10_no_plate_image_does_not_crash" time="0.019" /><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_01_05_synthetic_plate_image_preprocess" time="0.004" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_output_shape_640" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0401_Letterbox object at 0x00000221084FE290&gt;
+
+    def test_letterbox_output_shape_640(self):
+        """letterbox() çıktısı her zaman (640,640,3) olmalı."""
+        test_id = "TC-04-01-a"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_ratio_positive" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0401_Letterbox object at 0x00000221084FE810&gt;
+
+    def test_letterbox_ratio_positive(self):
+        """Scale ratio her zaman pozitif olmalı."""
+        test_id = "TC-04-01-b"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_no_nan_inf" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0401_Letterbox object at 0x00000221084FEE50&gt;
+
+    def test_letterbox_no_nan_inf(self):
+        """letterbox çıktısında NaN veya Inf olmamalı."""
+        test_id = "TC-04-01-c"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_pixel_normalization_range" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0401_Letterbox object at 0x00000221084FF4D0&gt;
+
+    def test_pixel_normalization_range(self):
+        """Normalize edilmiş giriş [0.0, 1.0] aralığında olmalı."""
+        test_id = "TC-04-02-a"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_input_tensor_shape" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0401_Letterbox object at 0x00000221084FFB10&gt;
+
+    def test_input_tensor_shape(self):
+        """Model giriş tensoru (1, 3, 640, 640) şeklinde olmalı."""
+        test_id = "TC-04-02-b"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[0-tam_karanlik]" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850CE10&gt;, brightness = 0
+label = 'tam_karanlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[30-az_aydinlik]" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850D090&gt;, brightness = 30
+label = 'az_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[200-cok_aydinlik]" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850D310&gt;, brightness = 200
+label = 'cok_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[255-tam_beyaz]" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850D590&gt;, brightness = 255
+label = 'tam_beyaz'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_blurred_image" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850DB90&gt;
+
+    def test_ocr_blurred_image(self):
+        """Bulanık görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-blur"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_noisy_image" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x00000221084FE150&gt;
+
+    def test_ocr_noisy_image(self):
+        """Gürültülü görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-noise"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:150: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_very_small_crop" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850C0D0&gt;
+
+    def test_ocr_very_small_crop(self):
+        """Çok küçük kırpma (10x10) OCR'ı çökermemeli."""
+        test_id = "TC-04-06-tiny"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_rotated_image" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x000002210850E0D0&gt;
+
+    def test_ocr_rotated_image(self):
+        """90° döndürülmüş görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-rotated"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:176: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_letterbox_latency" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0407_Latency object at 0x000002210850E690&gt;
+
+    def test_letterbox_latency(self):
+        """letterbox() N frame ortalaması 50ms altında olmalı."""
+        test_id = "TC-04-07-letterbox"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_ocr_process_latency" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0407_Latency object at 0x000002210850E9D0&gt;
+
+    def test_ocr_process_latency(self):
+        """ocr_process() tek çağrı LATENCY_LIMIT_SEC altında olmalı."""
+        test_id = "TC-04-07-ocr"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:224: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_preprocess_pipeline_latency" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0407_Latency object at 0x000002210850EF90&gt;
+
+    def test_preprocess_pipeline_latency(self):
+        """letterbox + normalize toplam süresi 100ms altında olmalı."""
+        test_id = "TC-04-07-preprocess"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_full_black_no_nan" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase object at 0x000002210850F7D0&gt;
+
+    def test_full_black_no_nan(self):
+        """Tam siyah görüntü letterbox'tan geçince NaN/Inf olmamalı."""
+        test_id = "TC-04-09-black"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:268: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_full_white_no_nan" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase object at 0x000002210850FE10&gt;
+
+    def test_full_white_no_nan(self):
+        """Tam beyaz görüntü letterbox'tan geçince NaN/Inf olmamalı."""
+        test_id = "TC-04-09-white"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:283: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_ocr_black_returns_none" time="0.003"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase object at 0x0000022108520490&gt;
+
+    def test_ocr_black_returns_none(self):
+        """Siyah görüntüde OCR None döndürmeli (anlamlı çıktı yok)."""
+        test_id = "TC-04-09-ocr-black"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_ocr_on_non_plate_returns_none" time="0.004"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound object at 0x0000022108520D10&gt;
+no_plate_image = array([[[230, 230, 230],
+        [230, 230, 230],
+        [230, 230, 230],
+        ...,
+        [230, 230, 230],
+     ...    ...,
+        [230, 230, 230],
+        [230, 230, 230],
+        [230, 230, 230]]], shape=(480, 640, 3), dtype=uint8)
+
+    def test_ocr_on_non_plate_returns_none(self, no_plate_image):
+        """Plakasız görüntüde ocr_process() None döndürmeli."""
+        test_id = "TC-04-10-a"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:320: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_no_plate_does_not_write_db" time="0.015"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound object at 0x00000221085213D0&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_no_plate_does_not_write_d0\\test_otopark.db'
+
+    def test_no_plate_does_not_write_db(self, temp_db):
+        """Plaka bulunamadığında DB'ye kayıt oluşturulmamalı."""
+        test_id = "TC-04-10-b"
+&gt;       import main as m
+
+tests\ocr\test_tc_04_ocr_pipeline.py:334: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_short_ocr_result_rejected" time="0.001" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_02_mock_api_load" time="0.003" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_03_mock_web_initial_load" time="0.001" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_04_mock_large_list_scroll" time="0.003" /><testcase classname="tests.smoke.test_tc_01_03_data_flow" name="test_data_flow" time="4.071" /><testcase classname="tests.smoke.test_tc_01_05_ocr" name="test_ocr_pipeline" time="0.031" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_01_mock_boot_time" time="0.002" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_02_mock_camera_init" time="0.018" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_03_mock_data_read_package_send" time="0.002" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_06_mock_web_app_pages" time="0.002" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_07_mock_create_and_view_record" time="0.002" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_01_temp_db_created" time="0.015" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_02_synthetic_plate_fixture" time="0.002" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_03_logger_writes_json" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_same_input_same_output" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_known_vectors" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_boundary_il_codes" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0203_StateMachine" name="test_valid_state_transitions" time="0.001"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 92&#10;      def test_valid_state_transitions(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:92&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 92
+      def test_valid_state_transitions(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:92</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0203_StateMachine" name="test_invalid_event_no_state_corruption" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 111&#10;      def test_invalid_event_no_state_corruption(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:111&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 111
+      def test_invalid_event_no_state_corruption(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:111</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_check_database_wrong_db_returns_false" time="0.003"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0204_TimeoutRetry object at 0x00000221088B9850&gt;
+
+    def test_check_database_wrong_db_returns_false(self):
+        """Bozuk/yanlış DB path'i ile check_database (False, 'Hata') döndürmeli."""
+        test_id = "TC-02-04-a"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_check_database_returns_tuple" time="0.017"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0204_TimeoutRetry object at 0x00000221088B9F10&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_check_database_returns_tu0\\test_otopark.db'
+
+    def test_check_database_returns_tuple(self, temp_db):
+        """check_database her zaman (bool, str) tuple döndürmeli."""
+        test_id = "TC-02-04-b"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_allowed_vehicle_recognized" time="0.017"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0204_TimeoutRetry object at 0x00000221088BA5D0&gt;
+db_with_data = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_allowed_vehicle_recognize0\\test_otopark.db'
+
+    def test_allowed_vehicle_recognized(self, db_with_data):
+        """İzinli araç check_database'de True döndürmeli."""
+        test_id = "TC-02-04-c"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:172: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_unknown_vehicle_returns_false" time="0.013"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0204_TimeoutRetry object at 0x00000221088BACD0&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_unknown_vehicle_returns_f0\\test_otopark.db'
+
+    def test_unknown_vehicle_returns_false(self, temp_db):
+        """Bilinmeyen araç check_database'de False döndürmeli."""
+        test_id = "TC-02-04-d"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_pool_10_items_triggers_decision" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_pool_cleared_after_decision" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_short_plates_not_added_to_pool" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0206_ConfigPersistence" name="test_write_read_config_vehicle" time="0.017" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0206_ConfigPersistence" name="test_db_name_configurable" time="0.002"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0206_ConfigPersistence object at 0x00000221088C91D0&gt;
+
+    def test_db_name_configurable(self):
+        """DB_NAME değişkeni runtime'da değiştirilebilmeli."""
+        test_id = "TC-02-06-b"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:288: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0901_BruteForce" name="test_repeated_wrong_mod_does_not_crash" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 311&#10;      def test_repeated_wrong_mod_does_not_crash(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:311&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 311
+      def test_repeated_wrong_mod_does_not_crash(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:311</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0901_BruteForce" name="test_high_frequency_get_stable" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 325&#10;      def test_high_frequency_get_stable(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:325&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 325
+      def test_high_frequency_get_stable(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:325</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_sql_injection_in_plaka" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 351&#10;      def test_sql_injection_in_plaka(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:351&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 351
+      def test_sql_injection_in_plaka(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:351</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_delete_nonexistent_id" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 372&#10;      def test_delete_nonexistent_id(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:372&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 372
+      def test_delete_nonexistent_id(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:372</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_check_database_normalizes_input" time="0.017"><failure message="ModuleNotFoundError: No module named 'onnxruntime'">self = &lt;test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess object at 0x00000221088CA990&gt;
+db_with_data = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-0\\test_check_database_normalizes0\\test_otopark.db'
+
+    def test_check_database_normalizes_input(self, db_with_data):
+        """check_database plakayı büyük harfe çevirip boşlukları temizlemeli."""
+        test_id = "TC-09-03-normalize"
+&gt;       import main as m
+
+tests\unit\test_tc_02_09_unit_security.py:388: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    import cv2
+    import numpy as np
+&gt;   import onnxruntime as ort
+E   ModuleNotFoundError: No module named 'onnxruntime'
+
+main.py:3: ModuleNotFoundError</failure></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0905_LogLeakage" name="test_api_response_no_sensitive_keys" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 409&#10;      def test_api_response_no_sensitive_keys(self, flask_app_with_data):&#10;E       fixture 'flask_app_with_data' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:409&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 409
+      def test_api_response_no_sensitive_keys(self, flask_app_with_data):
+E       fixture 'flask_app_with_data' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:409</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0905_LogLeakage" name="test_rtsp_credentials_not_in_api" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 424&#10;      def test_rtsp_credentials_not_in_api(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:424&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 424
+      def test_rtsp_credentials_not_in_api(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:424</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_index_response_headers_present" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 449&#10;      def test_index_response_headers_present(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:449&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 449
+      def test_index_response_headers_present(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:449</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_csp_header_recommendation" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 461&#10;      def test_csp_header_recommendation(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:461&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 461
+      def test_csp_header_recommendation(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:461</error></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_x_frame_options_recommendation" time="0.000"><error message="failed on setup with &quot;file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 478&#10;      def test_x_frame_options_recommendation(self, flask_app):&#10;E       fixture 'flask_app' not found&#10;&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:478&quot;">file C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py, line 478
+      def test_x_frame_options_recommendation(self, flask_app):
+E       fixture 'flask_app' not found
+&gt;       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, blank_frame, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, corrupt_image_bytes, db_with_data, doctest_namespace, free_tcp_port, free_tcp_port_factory, free_udp_port, free_udp_port_factory, monkeypatch, no_plate_image, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, sample_plate_crop, subtests, temp_db, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, white_frame
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:478</error></testcase><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_01_checksum_calculation" time="0.001" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_03_state_machine_transitions" time="0.002" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_04_timeout_retry_backoff" time="0.003" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_05_ring_buffer_overflow" time="0.002" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_06_parameter_read_write" time="0.004" /></testsuite></testsuites>

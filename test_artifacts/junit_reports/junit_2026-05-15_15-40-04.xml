@@ -1,0 +1,3569 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="15" skipped="2" tests="108" time="7.849" timestamp="2026-05-15T15:40:04.502092+03:00" hostname="DESKTOP-8KPERNF"><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_create_vehicle" time="0.535" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_read_vehicle_in_list" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_update_vehicle_plate" time="0.026" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_delete_vehicle" time="0.026" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0503_CRUD" name="test_update_missing_fields_returns_400" time="0.016" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_logs_ordered_by_id_desc" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_filter_by_durum" time="0.021" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_limit_100_logs" time="0.019" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0504_FilterSort" name="test_distinct_plates_in_logs" time="0.019" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_valid_csv_upload" time="0.046" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_semicolon_csv_upload" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_no_file_returns_400" time="0.014" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0505_FileUpload" name="test_header_row_skipped" time="0.021" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0508_Idempotency" name="test_duplicate_plate_not_doubled" time="0.026" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0508_Idempotency" name="test_logdan_yetkilendir_duplicate" time="0.028" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0509_Timestamp" name="test_log_entry_timestamp_format" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0509_Timestamp" name="test_log_timestamp_not_in_future" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0511_RateLimit" name="test_flood_get_kayitli_araclar" time="0.034" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0511_RateLimit" name="test_flood_post_arac_ekle" time="0.171" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_data_persists_after_db_reconnect" time="0.019" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_arac_persists_after_reconnect" time="0.020" /><testcase classname="tests.backend.test_tc_05_backend_api.TestTC0513_DataPersistence" name="test_multiple_writes_no_data_loss" time="0.055" /><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_03_crud_create_read_delete" time="0.023" /><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_08_duplicate_plate_prevention" time="0.020" /><testcase classname="tests.backend.test_tc_05_sqlite_mock_backend" name="test_tc_05_09_timestamp_format" time="0.020" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_same_plate_five_times_api" time="0.038" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_similarity_check_logic" time="0.003" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_pool_counter_picks_most_common" time="0.003" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0702_DuplicateVehicle" name="test_same_log_spam_prevention" time="0.025" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_none_crop_skipped" time="0.004" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_corrupt_jpeg_bytes_no_crash" time="0.002" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_single_pixel_frame" time="0.154"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...9.0.3', 'PYTEST_CURRENT_TEST': 'tests/e2e/test_tc_07_e2e.py::TestTC0704_CorruptFrame::test_single_pixel_frame (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C753B0310&gt;, creationflags = 0, shell = False
+p2cread = Handle(2480), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2512), errread = 17, errwrite = Handle(2524)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x0000022C74F58910&gt;
+
+    def test_single_pixel_frame(self):
+        """1x1 piksel frame OCR'ı çökertmemeli."""
+        test_id = "TC-07-04-1x1"
+        import main as m
+        try:
+            tiny = np.zeros((1, 1, 3), dtype=np.uint8)
+&gt;           result = m.ocr_process(tiny)
+                     ^^^^^^^^^^^^^^^^^^^
+
+tests\e2e\test_tc_07_e2e.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_55hy8qod', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x0000022C74F58910&gt;
+
+    def test_single_pixel_frame(self):
+        """1x1 piksel frame OCR'ı çökertmemeli."""
+        test_id = "TC-07-04-1x1"
+        import main as m
+        try:
+            tiny = np.zeros((1, 1, 3), dtype=np.uint8)
+            result = m.ocr_process(tiny)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\e2e\test_tc_07_e2e.py:158: Failed</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_letterbox_with_corrupt_shape" time="0.007" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0704_CorruptFrame" name="test_pipeline_continues_after_bad_frame" time="0.008"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...CURRENT_TEST': 'tests/e2e/test_tc_07_e2e.py::TestTC0704_CorruptFrame::test_pipeline_continues_after_bad_frame (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78D24710&gt;, creationflags = 0, shell = False
+p2cread = Handle(2552), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2564), errread = 17, errwrite = Handle(2576)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x0000022C74F595D0&gt;
+
+    def test_pipeline_continues_after_bad_frame(self):
+        """Bozuk frame'den sonra gelen geçerli frame işlenebilmeli."""
+        test_id = "TC-07-04-recovery"
+        import main as m
+        try:
+            # Bozuk
+            empty = np.zeros((0, 0, 3), dtype=np.uint8)
+            if empty.size &gt; 0:
+                m.ocr_process(empty)
+    
+            # Toparlanma: geçerli frame
+            valid = np.ones((80, 240, 3), dtype=np.uint8) * 200
+&gt;           result = m.ocr_process(valid)
+                     ^^^^^^^^^^^^^^^^^^^^
+
+tests\e2e\test_tc_07_e2e.py:186: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_pyws0utv', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_07_e2e.TestTC0704_CorruptFrame object at 0x0000022C74F595D0&gt;
+
+    def test_pipeline_continues_after_bad_frame(self):
+        """Bozuk frame'den sonra gelen geçerli frame işlenebilmeli."""
+        test_id = "TC-07-04-recovery"
+        import main as m
+        try:
+            # Bozuk
+            empty = np.zeros((0, 0, 3), dtype=np.uint8)
+            if empty.size &gt; 0:
+                m.ocr_process(empty)
+    
+            # Toparlanma: geçerli frame
+            valid = np.ones((80, 240, 3), dtype=np.uint8) * 200
+            result = m.ocr_process(valid)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\e2e\test_tc_07_e2e.py:191: Failed</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_veriler_contains_all_fields" time="0.031" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_veriler_durum_values_valid" time="0.021"><failure message="AssertionError: Geçersiz durum: REDDEDILDI&#10;assert 'REDDEDILDI' in {'ONAYLANDI', 'REDDEDİLDİ'}">self = &lt;test_tc_07_e2e.TestTC0705_Export object at 0x0000022C74F5A550&gt;
+flask_app_with_data = &lt;FlaskClient &lt;Flask 'main'&gt;&gt;
+
+    def test_veriler_durum_values_valid(self, flask_app_with_data):
+        """Log durum alanı yalnızca 'ONAYLANDI' veya 'REDDEDİLDİ' içermeli."""
+        test_id = "TC-07-05-b"
+        try:
+            resp = flask_app_with_data.get("/api/veriler")
+            data = resp.get_json()
+            gecerli_durumlar = {"ONAYLANDI", "REDDEDİLDİ"}
+            for log in data["loglar"]:
+&gt;               assert log[4] in gecerli_durumlar, \
+                    f"Geçersiz durum: {log[4]}"
+E                   AssertionError: Geçersiz durum: REDDEDILDI
+E                   assert 'REDDEDILDI' in {'ONAYLANDI', 'REDDEDİLDİ'}
+
+tests\e2e\test_tc_07_e2e.py:220: AssertionError</failure></testcase><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0705_Export" name="test_son_plaka_is_string" time="0.019" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_switch_to_sadece_kayit" time="0.016" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_switch_to_gecis_kontrol" time="0.015" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_invalid_mode_rejected" time="0.014" /><testcase classname="tests.e2e.test_tc_07_e2e.TestTC0706_ModeSwitch" name="test_mode_persists_across_requests" time="0.017" /><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_04_09_black_white_edge_cases" time="0.032" /><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_04_10_no_plate_image_does_not_crash" time="0.018" /><testcase classname="tests.ocr.test_tc_04_mock_image_pipeline" name="test_tc_01_05_synthetic_plate_image_preprocess" time="0.004" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_output_shape_640" time="0.007" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_ratio_positive" time="0.003" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_letterbox_no_nan_inf" time="0.017" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_pixel_normalization_range" time="0.009" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0401_Letterbox" name="test_input_tensor_shape" time="0.005" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[0-tam_karanlik]" time="0.008"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...ST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_various_brightness[0-tam_karanlik] (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78D360D0&gt;, creationflags = 0, shell = False
+p2cread = Handle(2432), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2588), errread = 17, errwrite = Handle(2596)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AA50&gt;, brightness = 0
+label = 'tam_karanlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_lf8wqgjn', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AA50&gt;, brightness = 0
+label = 'tam_karanlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+            result = m.ocr_process(img)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:131: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[30-az_aydinlik]" time="0.008"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2 --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...ST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_various_brightness[30-az_aydinlik] (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78B268D0&gt;, creationflags = 0, shell = False
+p2cread = Handle(2620), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2632), errread = 17, errwrite = Handle(2644)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AB90&gt;, brightness = 30
+label = 'az_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_6h1kvmt2', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AB90&gt;, brightness = 30
+label = 'az_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+            result = m.ocr_process(img)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:131: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[200-cok_aydinlik]" time="0.007"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_various_brightness[200-cok_aydinlik] (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78BF44D0&gt;, creationflags = 0, shell = False
+p2cread = Handle(2432), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2572), errread = 17, errwrite = Handle(8)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7ACD0&gt;, brightness = 200
+label = 'cok_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xcmdg8_n', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7ACD0&gt;, brightness = 200
+label = 'cok_aydinlik'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+            result = m.ocr_process(img)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:131: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_various_brightness[255-tam_beyaz]" time="0.008"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3 --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...EST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_various_brightness[255-tam_beyaz] (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C77110090&gt;, creationflags = 0, shell = False
+p2cread = Handle(2584), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2616), errread = 17, errwrite = Handle(2644)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AE10&gt;, brightness = 255
+label = 'tam_beyaz'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_dez775l3', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7AE10&gt;, brightness = 255
+label = 'tam_beyaz'
+
+    @pytest.mark.parametrize("brightness,label", [
+        (0,   "tam_karanlik"),
+        (30,  "az_aydinlik"),
+        (200, "cok_aydinlik"),
+        (255, "tam_beyaz"),
+    ])
+    def test_ocr_various_brightness(self, brightness, label):
+        """Farklı parlaklık seviyelerinde OCR çökmemeli."""
+        test_id = f"TC-04-06-brightness-{label}"
+        import main as m
+        try:
+            img = np.full((80, 240, 3), brightness, dtype=np.uint8)
+            result = m.ocr_process(img)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:131: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_blurred_image" time="0.010"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...', 'PYTEST_CURRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_blurred_image (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78C49490&gt;, creationflags = 0, shell = False
+p2cread = Handle(2676), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2688), errread = 17, errwrite = Handle(2700)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B110&gt;
+
+    def test_ocr_blurred_image(self):
+        """Bulanık görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-blur"
+        import main as m
+        try:
+            img = np.ones((80, 240, 3), dtype=np.uint8) * 200
+            img = cv2.GaussianBlur(img, (21, 21), 0)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:140: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_9xsmb2gq', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B110&gt;
+
+    def test_ocr_blurred_image(self):
+        """Bulanık görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-blur"
+        import main as m
+        try:
+            img = np.ones((80, 240, 3), dtype=np.uint8) * 200
+            img = cv2.GaussianBlur(img, (21, 21), 0)
+            result = m.ocr_process(img)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:145: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_noisy_image" time="0.018"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98 --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ....3', 'PYTEST_CURRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_noisy_image (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78F9C0D0&gt;, creationflags = 0, shell = False
+p2cread = Handle(2708), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2720), errread = 17, errwrite = Handle(2732)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B450&gt;
+
+    def test_ocr_noisy_image(self):
+        """Gürültülü görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-noise"
+        import main as m
+        try:
+            noise = np.random.randint(0, 256, (80, 240, 3), dtype=np.uint8)
+&gt;           result = m.ocr_process(noise)
+                     ^^^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_gebwok98', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B450&gt;
+
+    def test_ocr_noisy_image(self):
+        """Gürültülü görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-noise"
+        import main as m
+        try:
+            noise = np.random.randint(0, 256, (80, 240, 3), dtype=np.uint8)
+            result = m.ocr_process(noise)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:158: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_very_small_crop" time="0.006"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m__input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m_', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m__input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m_ --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ... 'PYTEST_CURRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_very_small_crop (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78FEE010&gt;, creationflags = 0, shell = False
+p2cread = Handle(2636), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2616), errread = 17, errwrite = Handle(2648)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B890&gt;
+
+    def test_ocr_very_small_crop(self):
+        """Çok küçük kırpma (10x10) OCR'ı çökermemeli."""
+        test_id = "TC-04-06-tiny"
+        import main as m
+        try:
+            tiny = np.ones((10, 10, 3), dtype=np.uint8) * 128
+&gt;           result = m.ocr_process(tiny)
+                     ^^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:166: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m__input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_heyuc9m_', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7B890&gt;
+
+    def test_ocr_very_small_crop(self):
+        """Çok küçük kırpma (10x10) OCR'ı çökermemeli."""
+        test_id = "TC-04-06-tiny"
+        import main as m
+        try:
+            tiny = np.ones((10, 10, 3), dtype=np.uint8) * 128
+            result = m.ocr_process(tiny)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:171: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0406_HardCases" name="test_ocr_rotated_image" time="0.020"><failure message="Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...', 'PYTEST_CURRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0406_HardCases::test_ocr_rotated_image (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78F9DE10&gt;, creationflags = 0, shell = False
+p2cread = Handle(2660), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2704), errread = 17, errwrite = Handle(2732)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7BED0&gt;
+
+    def test_ocr_rotated_image(self):
+        """90° döndürülmüş görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-rotated"
+        import main as m
+        try:
+            img = np.ones((80, 240, 3), dtype=np.uint8) * 180
+            cv2.putText(img, "34ABC123", (10, 60),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+&gt;           result = m.ocr_process(rotated)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_u92psk2n', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0406_HardCases object at 0x0000022C74F7BED0&gt;
+
+    def test_ocr_rotated_image(self):
+        """90° döndürülmüş görüntüde OCR çökmemeli."""
+        test_id = "TC-04-06-rotated"
+        import main as m
+        try:
+            img = np.ones((80, 240, 3), dtype=np.uint8) * 180
+            cv2.putText(img, "34ABC123", (10, 60),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+            result = m.ocr_process(rotated)
+            assert result is None or isinstance(result, str)
+            log_test_result(test_id, "PASS")
+        except Exception as e:
+            log_test_result(test_id, "FAIL", str(e))
+&gt;           pytest.fail(str(e))
+E           Failed: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+tests\ocr\test_tc_04_ocr_pipeline.py:187: Failed</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_letterbox_latency" time="0.019" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_ocr_process_latency" time="0.008"><failure message="pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...', 'PYTEST_CURRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0407_Latency::test_ocr_process_latency (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78D31A90&gt;, creationflags = 0, shell = False
+p2cread = Handle(2660), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2736), errread = 17, errwrite = Handle(2748)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0407_Latency object at 0x0000022C74F88E90&gt;
+
+    def test_ocr_process_latency(self):
+        """ocr_process() tek çağrı LATENCY_LIMIT_SEC altında olmalı."""
+        test_id = "TC-04-07-ocr"
+        import main as m
+        try:
+            img = np.ones((80, 240, 3), dtype=np.uint8) * 200
+            cv2.putText(img, "34ABC123", (10, 60),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 0), 2)
+            t0 = time.perf_counter()
+&gt;           m.ocr_process(img)
+
+tests\ocr\test_tc_04_ocr_pipeline.py:230: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_yepqqqgl', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0407_Latency" name="test_preprocess_pipeline_latency" time="0.040" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_full_black_no_nan" time="0.006" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_full_white_no_nan" time="0.008" /><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase" name="test_ocr_black_returns_none" time="0.005"><failure message="pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...URRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0409_LightingEdgeCase::test_ocr_black_returns_none (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78F50650&gt;, creationflags = 0, shell = False
+p2cread = Handle(2660), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2756), errread = 17, errwrite = Handle(2764)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0409_LightingEdgeCase object at 0x0000022C74F8AB90&gt;
+
+    def test_ocr_black_returns_none(self):
+        """Siyah görüntüde OCR None döndürmeli (anlamlı çıktı yok)."""
+        test_id = "TC-04-09-ocr-black"
+        import main as m
+        try:
+            black = np.zeros((80, 240, 3), dtype=np.uint8)
+&gt;           result = m.ocr_process(black)
+                     ^^^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:301: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_hzwtrhwi', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_ocr_on_non_plate_returns_none" time="0.028"><failure message="pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...NT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0410_PlateNotFound::test_ocr_on_non_plate_returns_none (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C78FEDD90&gt;, creationflags = 0, shell = False
+p2cread = Handle(2684), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2632), errread = 17, errwrite = Handle(1532)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound object at 0x0000022C74F8B450&gt;
+no_plate_image = array([[[230, 230, 230],
+        [230, 230, 230],
+        [230, 230, 230],
+        ...,
+        [230, 230, 230],
+     ...    ...,
+        [230, 230, 230],
+        [230, 230, 230],
+        [230, 230, 230]]], shape=(480, 640, 3), dtype=uint8)
+
+    def test_ocr_on_non_plate_returns_none(self, no_plate_image):
+        """Plakasız görüntüde ocr_process() None döndürmeli."""
+        test_id = "TC-04-10-a"
+        import main as m
+        try:
+&gt;           result = m.ocr_process(no_plate_image)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:322: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_ymobb6li', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_no_plate_does_not_write_db" time="0.028"><failure message="pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.">input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+&gt;           proc = subprocess.Popen(cmd_args, **subprocess_args())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Popen: returncode: None args: ['/usr/bin/tesseract', 'C:\\Users\\90546\\App...&gt;
+args = '/usr/bin/tesseract C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y_input.PNG C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y --oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 txt'
+executable = None, preexec_fn = None, close_fds = False, pass_fds = (), cwd = None
+env = environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\90546\\AppData\\Roaming', 'COMMONPROGRAMFILES': ...RRENT_TEST': 'tests/ocr/test_tc_04_ocr_pipeline.py::TestTC0410_PlateNotFound::test_no_plate_does_not_write_db (call)'})
+startupinfo = &lt;subprocess.STARTUPINFO object at 0x0000022C79009610&gt;, creationflags = 0, shell = False
+p2cread = Handle(2628), p2cwrite = 15, c2pread = 16, c2pwrite = Handle(2592), errread = 17, errwrite = Handle(1472)
+unused_restore_signals = True, unused_gid = None, unused_gids = None, unused_uid = None, unused_umask = -1
+unused_start_new_session = False, unused_process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       unused_restore_signals,
+                       unused_gid, unused_gids, unused_uid,
+                       unused_umask,
+                       unused_start_new_session, unused_process_group):
+        """Execute program (MS Windows version)"""
+    
+        assert not pass_fds, "pass_fds not supported on Windows."
+    
+        if isinstance(args, str):
+            pass
+        elif isinstance(args, bytes):
+            if shell:
+                raise TypeError('bytes args is not allowed on Windows')
+            args = list2cmdline([args])
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = list2cmdline([args])
+        else:
+            args = list2cmdline(args)
+    
+        if executable is not None:
+            executable = os.fsdecode(executable)
+    
+        # Process startup details
+        if startupinfo is None:
+            startupinfo = STARTUPINFO()
+        else:
+            # bpo-34044: Copy STARTUPINFO since it is modified above,
+            # so the caller can reuse it multiple times.
+            startupinfo = startupinfo.copy()
+    
+        use_std_handles = -1 not in (p2cread, c2pwrite, errwrite)
+        if use_std_handles:
+            startupinfo.dwFlags |= _winapi.STARTF_USESTDHANDLES
+            startupinfo.hStdInput = p2cread
+            startupinfo.hStdOutput = c2pwrite
+            startupinfo.hStdError = errwrite
+    
+        attribute_list = startupinfo.lpAttributeList
+        have_handle_list = bool(attribute_list and
+                                "handle_list" in attribute_list and
+                                attribute_list["handle_list"])
+    
+        # If we were given an handle_list or need to create one
+        if have_handle_list or (use_std_handles and close_fds):
+            if attribute_list is None:
+                attribute_list = startupinfo.lpAttributeList = {}
+            handle_list = attribute_list["handle_list"] = \
+                list(attribute_list.get("handle_list", []))
+    
+            if use_std_handles:
+                handle_list += [int(p2cread), int(c2pwrite), int(errwrite)]
+    
+            handle_list[:] = self._filter_handle_list(handle_list)
+    
+            if handle_list:
+                if not close_fds:
+                    warnings.warn("startupinfo.lpAttributeList['handle_list'] "
+                                  "overriding close_fds", RuntimeWarning)
+    
+                # When using the handle_list we always request to inherit
+                # handles but the only handles that will be inherited are
+                # the ones in the handle_list
+                close_fds = False
+    
+        if shell:
+            startupinfo.dwFlags |= _winapi.STARTF_USESHOWWINDOW
+            startupinfo.wShowWindow = _winapi.SW_HIDE
+            if not executable:
+                # gh-101283: without a fully-qualified path, before Windows
+                # checks the system directories, it first looks in the
+                # application directory, and also the current directory if
+                # NeedCurrentDirectoryForExePathW(ExeName) is true, so try
+                # to avoid executing unqualified "cmd.exe".
+                comspec = os.environ.get('ComSpec')
+                if not comspec:
+                    system_root = os.environ.get('SystemRoot', '')
+                    comspec = os.path.join(system_root, 'System32', 'cmd.exe')
+                    if not os.path.isabs(comspec):
+                        raise FileNotFoundError('shell not found: neither %ComSpec% nor %SystemRoot% is set')
+                if os.path.isabs(comspec):
+                    executable = comspec
+            else:
+                comspec = executable
+    
+            args = '{} /c "{}"'.format (comspec, args)
+    
+        if cwd is not None:
+            cwd = os.fsdecode(cwd)
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        # Start the process
+        try:
+&gt;           hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                                     # no special security
+                                     None, None,
+                                     int(not close_fds),
+                                     creationflags,
+                                     env,
+                                     cwd,
+                                     startupinfo)
+E                                    FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\subprocess.py:1538: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound object at 0x0000022C74F8BB90&gt;
+temp_db = 'C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-5\\test_no_plate_does_not_write_d0\\test_otopark.db'
+
+    def test_no_plate_does_not_write_db(self, temp_db):
+        """Plaka bulunamadığında DB'ye kayıt oluşturulmamalı."""
+        test_id = "TC-04-10-b"
+        import main as m
+        original = m.DB_NAME
+        m.DB_NAME = temp_db
+        try:
+            # ocr_process None döndürüyor → log_entry çağrılmaz
+            img = np.zeros((80, 240, 3), dtype=np.uint8)
+&gt;           result = m.ocr_process(img)
+                     ^^^^^^^^^^^^^^^^^^
+
+tests\ocr\test_tc_04_ocr_pipeline.py:340: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+main.py:85: in ocr_process
+    text = pytesseract.image_to_string(gray, config='--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789').strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:486: in image_to_string
+    return {
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:489: in &lt;lambda&gt;
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:352: in run_and_get_output
+    run_tesseract(**kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input_filename = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y_input.PNG'
+output_filename_base = 'C:\\Users\\90546\\AppData\\Local\\Temp\\tess_xu4q3f3y', extension = 'txt', lang = None
+config = '--oem 3 --psm 7 -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', nice = 0, timeout = 0
+
+    def run_tesseract(
+        input_filename,
+        output_filename_base,
+        extension,
+        lang,
+        config='',
+        nice=0,
+        timeout=0,
+    ):
+        cmd_args = []
+        not_windows = not (sys.platform == 'win32')
+    
+        if not_windows and nice != 0:
+            cmd_args += ('nice', '-n', str(nice))
+    
+        cmd_args += (tesseract_cmd, input_filename, output_filename_base)
+    
+        if lang is not None:
+            cmd_args += ('-l', lang)
+    
+        if config:
+            cmd_args += shlex.split(config, posix=not_windows)
+    
+        for _extension in extension.split():
+            if _extension not in {'box', 'osd', 'tsv', 'xml'}:
+                cmd_args.append(_extension)
+        LOGGER.debug('%r', cmd_args)
+    
+        try:
+            proc = subprocess.Popen(cmd_args, **subprocess_args())
+        except OSError as e:
+            if e.errno != ENOENT:
+                raise
+            else:
+&gt;               raise TesseractNotFoundError()
+E               pytesseract.pytesseract.TesseractNotFoundError: /usr/bin/tesseract is not installed or it's not in your PATH. See README file for more information.
+
+..\..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pytesseract\pytesseract.py:280: TesseractNotFoundError</failure></testcase><testcase classname="tests.ocr.test_tc_04_ocr_pipeline.TestTC0410_PlateNotFound" name="test_short_ocr_result_rejected" time="0.003" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_02_mock_api_load" time="0.004" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_03_mock_web_initial_load" time="0.002" /><testcase classname="tests.performance.test_tc_08_mock_performance" name="test_tc_08_04_mock_large_list_scroll" time="0.003" /><testcase classname="tests.smoke.test_tc_01_03_data_flow" name="test_data_flow" time="4.091" /><testcase classname="tests.smoke.test_tc_01_05_ocr" name="test_ocr_pipeline" time="0.033" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_01_mock_boot_time" time="0.003" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_02_mock_camera_init" time="0.003" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_03_mock_data_read_package_send" time="0.003" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_06_mock_web_app_pages" time="0.002" /><testcase classname="tests.smoke.test_tc_01_smoke_mock" name="test_tc_01_07_mock_create_and_view_record" time="0.002" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_01_temp_db_created" time="0.027" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_02_synthetic_plate_fixture" time="0.003" /><testcase classname="tests.unit.test_tc_00_test_infrastructure" name="test_tc_00_03_logger_writes_json" time="0.003" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_same_input_same_output" time="0.003" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_known_vectors" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0201_Determinism" name="test_regex_boundary_il_codes" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0203_StateMachine" name="test_valid_state_transitions" time="0.018" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0203_StateMachine" name="test_invalid_event_no_state_corruption" time="0.015" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_check_database_wrong_db_returns_false" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_check_database_returns_tuple" time="0.016" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_allowed_vehicle_recognized" time="0.019" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0204_TimeoutRetry" name="test_unknown_vehicle_returns_false" time="0.017" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_pool_10_items_triggers_decision" time="0.003" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_pool_cleared_after_decision" time="0.002" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0205_BufferOverflow" name="test_short_plates_not_added_to_pool" time="0.003" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0206_ConfigPersistence" name="test_write_read_config_vehicle" time="0.019" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0206_ConfigPersistence" name="test_db_name_configurable" time="0.004" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0901_BruteForce" name="test_repeated_wrong_mod_does_not_crash" time="0.018" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0901_BruteForce" name="test_high_frequency_get_stable" time="0.052" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_sql_injection_in_plaka" time="0.029" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_delete_nonexistent_id" time="0.016" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0903_UnauthorizedAccess" name="test_check_database_normalizes_input" time="0.018" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0905_LogLeakage" name="test_api_response_no_sensitive_keys" time="0.022" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0905_LogLeakage" name="test_rtsp_credentials_not_in_api" time="0.015" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_index_response_headers_present" time="0.020" /><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_csp_header_recommendation" time="0.014"><skipped type="pytest.skip" message="CSP header mevcut değil (flask-talisman gerekli)">C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:476: CSP header mevcut değil (flask-talisman gerekli)</skipped></testcase><testcase classname="tests.unit.test_tc_02_09_unit_security.TestTC0909_CSP" name="test_x_frame_options_recommendation" time="0.015"><skipped type="pytest.skip" message="X-Frame-Options mevcut değil">C:\Users\90546\Desktop\PLATE-DETECTION\plate_detection\tests\unit\test_tc_02_09_unit_security.py:490: X-Frame-Options mevcut değil</skipped></testcase><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_01_checksum_calculation" time="0.003" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_03_state_machine_transitions" time="0.002" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_04_timeout_retry_backoff" time="0.003" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_05_ring_buffer_overflow" time="0.003" /><testcase classname="tests.unit.test_tc_02_unit_core" name="test_tc_02_06_parameter_read_write" time="0.005" /></testsuite></testsuites>
