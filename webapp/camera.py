@@ -1,8 +1,9 @@
 import cv2
 
+
 class VideoCamera:
     def __init__(self):
-        self.video = cv2.VideoCapture("rtsp://192.168.x.x:554/...")
+        self.video = cv2.VideoCapture(0)
 
     def get_frame(self):
         success, image = self.video.read()
@@ -10,5 +11,5 @@ class VideoCamera:
         if not success:
             return None
 
-        _, jpeg = cv2.imencode('.jpg', image)
+        _, jpeg = cv2.imencode(".jpg", image)
         return jpeg.tobytes()

@@ -8,20 +8,12 @@ import time
 import sqlite3
 import datetime
 import urllib.request
-import RPi.GPIO as GPIO
-import atexit
 from flask import Flask, Response, render_template, jsonify, request
 from collections import Counter
 from difflib import SequenceMatcher
-import os
-from datetime import datetime, timedelta
-import glob
-import logging
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.ERROR)
 
 # --- AYARLAR ---
-RTSP_URL = "rtsp://samet_yilmaz:1x1samet1x1@192.168.1.57:554/stream1" # KENDİ KAMERA LİNKİNİ YAZ
+RTSP_URL = "rtsp://samet_yilmaz:1x1samet1x1@192.168.1.34:554/stream1" # KENDİ KAMERA LİNKİNİ YAZ
 MODEL_PATH = "plaka_yolov8.onnx"
 DB_NAME = "otopark.db"
 CONF_THRES = 0.40 # Hatalı tespitleri (petek/dolap) engellemek için 0.40'a çıkarıldı
@@ -30,51 +22,6 @@ SISTEM_MODU = "GECIS_KONTROL"  # İki değer alabilir: "GECIS_KONTROL" veya "SAD
 
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"
 TR_REGEX = re.compile(r'(0[1-9]|[1-7][0-9]|8[0-1])\s*[A-Z]{1,4}\s*[0-9]{2,4}')
-
-# --- IR SENSÖR AYARLARI ---
-SENSOR_PIN = 17  # Siyah kabloyu (direnç devresinden sonra) bağladığın pin
-
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(SENSOR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-# Program kapandığında pinleri serbest bırakmak için temizlik fonksiyonu
-def cleanup_pins():
-    GPIO.cleanup()
-
-atexit.register(cleanup_pins)
-# --------------------------
-
-FOTOGRAF_KLASORU = "fotograflar"
-
-# Eğer klasör yoksa oluştur
-if not os.path.exists(FOTOGRAF_KLASORU):
-    os.makedirs(FOTOGRAF_KLASORU)
-
-def eski_fotograflari_temizle():
-    try:
-        # 30 gün öncesinin tarihini hesapla
-        limit_tarih = datetime.now() - timedelta(days=30)
-        
-        # Klasördeki tüm jpg dosyalarını bul
-        dosyalar = glob.glob(os.path.join(FOTOGRAF_KLASORU, "*.jpg"))
-        
-        silinen_sayisi = 0
-        for dosya in dosyalar:
-            # Dosyanın oluşturulma/değiştirilme zamanını al
-            dosya_zamani = datetime.fromtimestamp(os.path.getmtime(dosya))
-            
-            # Eğer 30 günden eskiyse sil
-            if dosya_zamani < limit_tarih:
-                os.remove(dosya)
-                silinen_sayisi += 1
-                
-        if silinen_sayisi > 0:
-            print(f"Sistem Temizliği: {silinen_sayisi} adet eski fotoğraf silindi.")
-    except Exception as e:
-        print(f"Fotoğraf temizleme hatası: {e}")
-
-# Sistemi başlatırken bir kere temizlik yap
-eski_fotograflari_temizle()
 
 # --- YENİ MİMARİ GLOBAL DEĞİŞKENLERİ ---
 current_frame = None
@@ -89,16 +36,15 @@ app = Flask(__name__)
 # --- VERİTABANI FONKSİYONLARI ---
 def log_entry(plaka, sahip, durum):
     try:
-        conn = sqlite3.connect(DB_NAME, timeout=10)
+        conn = sqlite3.connect(DB_NAME)
         cursor = conn.cursor()
-        zaman = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        zaman = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute("INSERT INTO giris_loglari (plaka, sahip, tarih, durum) VALUES (?, ?, ?, ?)", 
                        (plaka, sahip, zaman, durum))
         conn.commit()
         conn.close()
-        print(f"✅ BAŞARILI: {plaka} veritabanına yazıldı.")
-    except Exception as e:
-        print(f"❌ VERİTABANI HATASI: Kayıt yapılamadı! Hata sebebi: {e}")
+    except:
+        pass
 
 def check_database(plaka):
     clean_search = plaka.upper().replace(" ", "")
@@ -173,21 +119,6 @@ def ai_thread():
     bekleme_suresi = 5
 
     while True:
-        # 1. SENSÖRÜ OKU
-        sensor_durumu = GPIO.input(SENSOR_PIN)
-        
-        # E18-D80NK sensörleri genelde önünde engel varken 0 (LOW), engel yokken 1 (HIGH) sinyali üretir.
-        arac_var_mi = (sensor_durumu == 0)
-
-        # 2. ARAÇ YOKSA SİSTEMİ UYUT
-        if not arac_var_mi:
-            time.sleep(0.2)  # İşlemciyi yormamak için kısa bir uyku
-            
-            # Araç yokken okuma havuzunu temizle ki eski araçtan kalan veriler yeniye karışmasın
-            plaka_havuzu = []
-            havuz_baslangic = time.time()
-            
-            continue  # Döngünün altındaki yapay zeka kodlarını atla ve başa dön
         with lock:
             if current_frame is None:
                 frame_ai = None
@@ -266,15 +197,6 @@ def ai_thread():
                                     # Veritabanına kaydet
                                     log_entry(kesin_plaka, log_sahip, log_durum)
                                     
-                                    # --- YENİ EKLENEN FOTOĞRAF KAYDETME KISMI ---
-                                    # 2026-05-05_11-15-55_34DTC82.jpg formatında isim oluştur
-                                    anlik_zaman = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                                    dosya_adi = f"{FOTOGRAF_KLASORU}/{anlik_zaman}_{kesin_plaka}.jpg"
-                                    
-                                    # Kameranın o anki tam görüntüsünü kaydet (Sadece plakayı değil, tüm aracı görmek için frame_ai kullanıyoruz)
-                                    if frame_ai is not None:
-                                        cv2.imwrite(dosya_adi, frame_ai)
-                                    # ---------------------------------------------	
                                     # Eğer izinliyse ve geçiş kontrol modundaysa bariyeri aç
                                     if is_allowed and SISTEM_MODU == "GECIS_KONTROL":
                                         threading.Thread(target=open_barrier).start()

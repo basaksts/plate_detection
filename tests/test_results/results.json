@@ -1,0 +1,208 @@
+[
+  {
+    "test_id": "TC-00-01",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Geçici SQLite veritabanı ve tablolar başarıyla oluşturuldu.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-00-02",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Sentetik plaka görüntüsü başarıyla üretildi ve JPEG'e çevrildi.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-00-03",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Logger JSON dosyasına test sonucu yazabiliyor.",
+    "metrics": {
+      "example_accuracy": 1.0
+    }
+  },
+  {
+    "test_id": "TC-05-03",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "SQLite mock CRUD akışı başarılı.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-05-08",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Duplicate plaka UNIQUE constraint ile engellendi.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-05-09",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Timestamp ISO formatında kaydedildi ve parse edilebildi.",
+    "metrics": {
+      "timestamp": "2026-05-03T17:38:40"
+    }
+  },
+  {
+    "test_id": "TC-04-09",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Tam siyah ve tam beyaz görüntüler preprocess aşamasında çökmedi.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-04-10",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Plaka olmayan görüntüde sistem çökmeden 'plaka yok' durumuna düşebiliyor.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-01-05",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Sentetik plaka görüntüsü preprocess pipeline'dan geçti.",
+    "metrics": {
+      "white_pixels": 23097,
+      "black_pixels": 3903
+    }
+  },
+  {
+    "test_id": "TC-02-01",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Checksum hesaplama bilinen test vektorleriyle dogrulandi.",
+    "metrics": {
+      "payload": "34ABC123",
+      "checksum": 195
+    }
+  },
+  {
+    "test_id": "TC-02-03",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "State machine idle-capture-send-retry-error-reset gecisleri dogrulandi.",
+    "metrics": {}
+  },
+  {
+    "test_id": "TC-02-04",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Timeout/retry/backoff algoritmasi beklenen gecikmeleri uretti.",
+    "metrics": {
+      "delays_ms": [
+        100,
+        200,
+        400,
+        800,
+        2000
+      ]
+    }
+  },
+  {
+    "test_id": "TC-02-05",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Ring buffer kapasite dolunca overflow kontrollu sekilde reddedildi.",
+    "metrics": {
+      "capacity": 3,
+      "overflow_blocked": true
+    }
+  },
+  {
+    "test_id": "TC-02-06",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Parametre okuma/yazma islemi gecici config dosyasi uzerinde dogrulandi.",
+    "metrics": {
+      "config_path": "C:\\Users\\90546\\AppData\\Local\\Temp\\pytest-of-90546\\pytest-6\\test_tc_02_06_parameter_read_w0\\device_config.json",
+      "device_id": "RPI-PLATE-001"
+    }
+  },
+  {
+    "test_id": "TC-01-01",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock boot sequence tamamlandi ve temel servisler ready durumuna gecti.",
+    "metrics": {
+      "boot_time_seconds": 1e-06,
+      "services": {
+        "camera_service": "ready",
+        "network_service": "ready",
+        "web_service": "ready",
+        "database_service": "ready"
+      }
+    }
+  },
+  {
+    "test_id": "TC-01-02",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock kamera baslatildi ve sentetik frame JPEG olarak alindi.",
+    "metrics": {
+      "frame_size_bytes": 9380
+    }
+  },
+  {
+    "test_id": "TC-01-03",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock veri okuma-paketleme-gonderme zinciri basariyla tamamlandi.",
+    "metrics": {
+      "sent_packets": 1,
+      "packet_length": 103
+    }
+  },
+  {
+    "test_id": "TC-01-06",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock web uygulama login oldu ve temel sayfalar yuklendi.",
+    "metrics": {
+      "pages_checked": 4
+    }
+  },
+  {
+    "test_id": "TC-01-07",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock web uygulamada kayit olusturma ve goruntuleme akisi dogrulandi.",
+    "metrics": {
+      "record_id": 1
+    }
+  },
+  {
+    "test_id": "TC-08-02",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock API listeleme yuk testi temsili olarak tamamlandi.",
+    "metrics": {
+      "virtual_users": 20,
+      "records_per_user": 100,
+      "avg_response_ms": 0.0483,
+      "p95_response_ms": 0.0533
+    }
+  },
+  {
+    "test_id": "TC-08-03",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock web ilk acilis bilesenleri basariyla yuklendi.",
+    "metrics": {
+      "load_time_ms": 0.001,
+      "component_count": 5
+    }
+  },
+  {
+    "test_id": "TC-08-04",
+    "status": "PASS",
+    "timestamp": "2026-05-03T17:38:40",
+    "details": "Mock buyuk liste render testi 1000 kayit ile tamamlandi.",
+    "metrics": {
+      "record_count": 1000,
+      "render_time_ms": 0.3723
+    }
+  }
+]
